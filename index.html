@@ -169,10 +169,8 @@
   </div>
 
   <script>
-    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // AJAX submit to Formspree (no page leave, no mail app)
     const form = document.getElementById('contactForm');
     const status = document.getElementById('formStatus');
     form?.addEventListener('submit', async (e)=>{
