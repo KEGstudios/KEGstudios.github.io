@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kemal Emre Gülbayrak — Portföy</title>
-  <meta name="description" content="Kısa biyografi, beceriler ve iletişim bilgileri." />
-  <meta property="og:title" content="Kemal Emre Gülbayrak — Portföy" />
-  <meta property="og:description" content="Kısa biyografi, beceriler ve iletişim bilgileri." />
+  <title>Kemal Emre Gülbayrak — Portfolio</title>
+  <meta name="description" content="Short bio, skills and contact information." />
+  <meta property="og:title" content="Kemal Emre Gülbayrak — Portfolio" />
+  <meta property="og:description" content="Short bio, skills and contact information." />
   <meta property="og:type" content="website" />
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💻</text></svg>">
@@ -42,7 +42,8 @@
     section{margin:34px 0}
     h2{font-size:22px;margin:0 0 14px}
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid var(--border);font-size:12px;color:var(--muted);margin-right:6px}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid var(--border);font-size:12px;color:var(--muted);margin-right:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
+    .pill:hover{overflow:visible;white-space:normal;max-width:none;background:rgba(255,255,255,.05)}
     footer{margin:40px 0 10px;color:var(--muted);text-align:center}
     .skills{display:flex;flex-wrap:wrap;gap:8px}
     .contact{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -54,41 +55,41 @@
   <div class="container">
     <header>
       <div class="brand">
-        <img class="avatar" src="https://github.com/KEGstudios.png" alt="Profil" onerror="this.style.display='none'"/>
+        <img class="avatar" src="https://github.com/KEGstudios.png" alt="Profile" onerror="this.style.display='none'"/>
         <div>
           <div class="mono" style="font-weight:700">Kemal Emre Gülbayrak</div>
-          <div class="subtitle">Bilgisayar Mühendisliği Öğrencisi</div>
+          <div class="subtitle">Computer Engineering Student</div>
         </div>
       </div>
       <nav>
-        <a href="#beceriler">Beceriler</a>
-        <a href="#iletisim">İletişim</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
         <a href="https://github.com/KEGstudios" target="_blank" rel="noopener">GitHub</a>
       </nav>
     </header>
 
     <section class="hero">
       <div class="card">
-        <h1>Merhaba, ben <span style="color:var(--brand)">Kemal</span>. Üretmeyi seven bir geliştiriciyim.</h1>
-        <p class="subtitle">C#, Python ve PowerShell üzerinde çalışıyorum. Öğrenmeye ve yeni projeler geliştirmeye devam ediyorum.</p>
+        <h1>Hello, I'm <span style="color:var(--brand)">Kemal</span>.</h1>
+        <p class="subtitle">I'm passionate about building clean and efficient solutions. My focus areas are C#, Python, and automation with PowerShell. I'm constantly improving my skills and working on projects that blend software engineering with practical problem solving.</p>
         <div class="row">
-          <a class="btn primary" href="#beceriler">Becerilerim</a>
-          <a class="btn" href="https://github.com/KEGstudios?tab=repositories" target="_blank" rel="noopener">Tüm repolarım</a>
-          <button class="btn" id="copyEmail" type="button">E-posta: <span class="mono">kemalgulbayrak@gmail.com</span></button>
+          <a class="btn primary" href="#skills">See my skills</a>
+          <a class="btn" href="https://github.com/KEGstudios?tab=repositories" target="_blank" rel="noopener">All repositories</a>
+          <button class="btn" id="copyEmail" type="button">Email: <span class="mono">kemalgulbayrak@gmail.com</span></button>
         </div>
       </div>
       <div class="card">
-        <h2>Hızlı Bilgiler</h2>
+        <h2>Quick Info</h2>
         <ul>
-          <li>📍 İstanbul, TR</li>
-          <li>🎓 Marmara Üni. — Bilgisayar Müh.</li>
-          <li>💼 Staj: Brisa / PulSA, PIDM</li>
-          <li>🏆 Sertifikalar: BTEC, FLL 2018 ...</li>
+          <li>📍 Istanbul, TR</li>
+          <li>🎓 Marmara University — Computer Engineering</li>
+          <li>💼 Internship: Brisa / PulSA, PIDM</li>
+          <li>🏆 Certificates: BTEC, FLL 2018, Academic Science Programme, Social Responsibility Project</li>
         </ul>
       </div>
     </section>
 
-    <section id="beceriler">
+    <section id="skills">
       <h2>Skills</h2>
       <div class="card">
         <div class="skills">
@@ -108,26 +109,26 @@
       </div>
     </section>
 
-    <section id="iletisim">
-      <h2>İletişim</h2>
+    <section id="contact">
+      <h2>Contact</h2>
       <div class="card contact">
         <div>
-          <p>İş birliği ve projeler için bana e-posta gönderebilirsiniz.</p>
-          <p><strong>E-posta:</strong> <span class="mono" id="emailText">kemalgulbayrak@gmail.com</span> <kbd class="kbd">Kopyala</kbd></p>
+          <p>You can reach me for collaboration and projects.</p>
+          <p><strong>Email:</strong> <span class="mono" id="emailText">kemalgulbayrak@gmail.com</span> <kbd class="kbd">Copy</kbd></p>
           <p><strong>GitHub:</strong> <a href="https://github.com/KEGstudios" target="_blank" rel="noopener">github.com/KEGstudios</a></p>
-          <p><strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">linkedin.com/in/KEGstudios</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kemal-emre-gülbayrak" target="_blank" rel="noopener">linkedin.com/in/kemal-emre-gülbayrak</a></p>
         </div>
-        <form onsubmit="event.preventDefault(); alert('Mesajın için teşekkürler! E-posta üzerinden dönüş yapacağım.');">
-          <label>Adın<br><input required name="name" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></label>
-          <label style="display:block;margin-top:10px">E-posta<br><input required type="email" name="from" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></label>
-          <label style="display:block;margin-top:10px">Mesaj<br><textarea required rows="4" name="msg" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></textarea></label>
-          <button class="btn primary" style="margin-top:12px" type="submit">Gönder</button>
+        <form action="mailto:kemalgulbayrak@gmail.com" method="post" enctype="text/plain">
+          <label>Name<br><input required name="name" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></label>
+          <label style="display:block;margin-top:10px">Email<br><input required type="email" name="from" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></label>
+          <label style="display:block;margin-top:10px">Message<br><textarea required rows="4" name="msg" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></textarea></label>
+          <button class="btn primary" style="margin-top:12px" type="submit">Send</button>
         </form>
       </div>
     </section>
 
     <footer>
-      © <span id="y"></span> Kemal Emre Gülbayrak — <a href="https://github.com/KEGstudios/KEGstudios.github.io" target="_blank" rel="noopener">KAYNAK KOD</a>
+      © <span id="y"></span> Kemal Emre Gülbayrak — <a href="https://github.com/KEGstudios/KEGstudios.github.io" target="_blank" rel="noopener">SOURCE CODE</a>
     </footer>
   </div>
 
@@ -135,7 +136,7 @@
     document.getElementById('y').textContent = new Date().getFullYear();
     document.getElementById('copyEmail')?.addEventListener('click', async () => {
       const email = document.getElementById('emailText').textContent.trim();
-      try{await navigator.clipboard.writeText(email); alert('E-posta kopyalandı: ' + email);}catch{prompt('Elle kopyalayabilirsin:', email)}
+      try{await navigator.clipboard.writeText(email); alert('Email copied: ' + email);}catch{prompt('Copy manually:', email)}
     });
   </script>
 </body>
