@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kemal Emre Gülbayrak — Portföy</title>
+  <meta name="description" content="Kısa biyografi, beceriler ve iletişim bilgileri." />
+  <meta property="og:title" content="Kemal Emre Gülbayrak — Portföy" />
+  <meta property="og:description" content="Kısa biyografi, beceriler ve iletişim bilgileri." />
+  <meta property="og:type" content="website" />
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💻</text></svg>">
+  <style>
+    :root{
+      --bg: #0b0c10;
+      --card:#111318;
+      --muted:#97a0af;
+      --text:#e6e9ef;
+      --brand:#00d1b2;
+      --accent:#4c8bf5;
+      --border:#1f232d;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+    @media (prefers-color-scheme: light){
+      :root{--bg:#f7f9fc; --card:#ffffff; --muted:#5f6b7a; --text:#0a0a0a; --border:#e8edf3; --shadow: 0 10px 25px rgba(10,10,10,.08)}
+    }
+    html,body{margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif; color:var(--text); background:radial-gradient(1200px 600px at 10% -10%, rgba(76,139,245,.15), transparent),radial-gradient(1000px 500px at 110% 10%, rgba(0,209,178,.14), transparent), var(--bg)}
+    .container{max-width:1080px;margin:0 auto;padding:28px}
+    header{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .brand{display:flex;gap:14px;align-items:center}
+    .avatar{width:56px;height:56px;border-radius:50%;border:2px solid var(--border);box-shadow:var(--shadow);object-fit:cover}
+    nav a{color:var(--muted);margin-left:16px;text-decoration:none;border-bottom:2px solid transparent;padding-bottom:4px}
+    nav a:hover{color:var(--text);border-color:var(--brand)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;margin:34px 0}
+    .card{background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);border-radius:18px;padding:22px}
+    h1{font-size:clamp(28px,4vw,40px);line-height:1.2;margin:0 0 8px}
+    .subtitle{color:var(--muted);margin:0 0 16px}
+    .row{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));color:var(--text);text-decoration:none}
+    .btn.primary{background:linear-gradient(180deg, var(--brand), #00b39f); color:#081a14; border-color:transparent; font-weight:600}
+    .btn:hover{transform:translateY(-1px);transition:.2s}
+    section{margin:34px 0}
+    h2{font-size:22px;margin:0 0 14px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid var(--border);font-size:12px;color:var(--muted);margin-right:6px}
+    footer{margin:40px 0 10px;color:var(--muted);text-align:center}
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .kbd{padding:.2rem .45rem;border:1px solid var(--border);border-bottom-width:2px;border-radius:6px;background:rgba(255,255,255,.03)}
+    @media (max-width:920px){.hero{grid-template-columns:1fr}.contact{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <img class="avatar" src="https://github.com/KEGstudios.png" alt="Profil" onerror="this.style.display='none'"/>
+        <div>
+          <div class="mono" style="font-weight:700">Kemal Emre Gülbayrak</div>
+          <div class="subtitle">Bilgisayar Mühendisliği Öğrencisi</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#beceriler">Beceriler</a>
+        <a href="#iletisim">İletişim</a>
+        <a href="https://github.com/KEGstudios" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h1>Merhaba, ben <span style="color:var(--brand)">Kemal</span>. Üretmeyi seven bir geliştiriciyim.</h1>
+        <p class="subtitle">C#, Python ve PowerShell üzerinde çalışıyorum. Öğrenmeye ve yeni projeler geliştirmeye devam ediyorum.</p>
+        <div class="row">
+          <a class="btn primary" href="#beceriler">Becerilerim</a>
+          <a class="btn" href="https://github.com/KEGstudios?tab=repositories" target="_blank" rel="noopener">Tüm repolarım</a>
+          <button class="btn" id="copyEmail" type="button">E-posta: <span class="mono">kemalgulbayrak@gmail.com</span></button>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Hızlı Bilgiler</h2>
+        <ul>
+          <li>📍 İstanbul, TR</li>
+          <li>🎓 Marmara Üni. — Bilgisayar Müh.</li>
+          <li>💼 Staj: Brisa / PulSA, PIDM</li>
+          <li>🏆 Sertifikalar: BTEC, FLL 2018 ...</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="beceriler">
+      <h2>Skills</h2>
+      <div class="card">
+        <div class="skills">
+          <span class="pill">C</span>
+          <span class="pill">Java</span>
+          <span class="pill">Python</span>
+          <span class="pill">C++</span>
+          <span class="pill">C# / .NET</span>
+        </div>
+        <br>
+        <div class="skills">
+          <span class="pill">Microsoft Office</span>
+          <span class="pill">HTML</span>
+          <span class="pill">Adobe Photoshop</span>
+          <span class="pill">Adobe Lightroom</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="iletisim">
+      <h2>İletişim</h2>
+      <div class="card contact">
+        <div>
+          <p>İş birliği ve projeler için bana e-posta gönderebilirsiniz.</p>
+          <p><strong>E-posta:</strong> <span class="mono" id="emailText">kemalgulbayrak@gmail.com</span> <kbd class="kbd">Kopyala</kbd></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/KEGstudios" target="_blank" rel="noopener">github.com/KEGstudios</a></p>
+          <p><strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">linkedin.com/in/KEGstudios</a></p>
+        </div>
+        <form onsubmit="event.preventDefault(); alert('Mesajın için teşekkürler! E-posta üzerinden dönüş yapacağım.');">
+          <label>Adın<br><input required name="name" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></label>
+          <label style="display:block;margin-top:10px">E-posta<br><input required type="email" name="from" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></label>
+          <label style="display:block;margin-top:10px">Mesaj<br><textarea required rows="4" name="msg" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></textarea></label>
+          <button class="btn primary" style="margin-top:12px" type="submit">Gönder</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Kemal Emre Gülbayrak — <a href="https://github.com/KEGstudios/KEGstudios.github.io" target="_blank" rel="noopener">KAYNAK KOD</a>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('copyEmail')?.addEventListener('click', async () => {
+      const email = document.getElementById('emailText').textContent.trim();
+      try{await navigator.clipboard.writeText(email); alert('E-posta kopyalandı: ' + email);}catch{prompt('Elle kopyalayabilirsin:', email)}
+    });
+  </script>
+</body>
+</html>
