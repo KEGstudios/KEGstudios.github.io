@@ -4,196 +4,665 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kemal Emre Gülbayrak — Portfolio</title>
-  <meta name="description" content="Short bio, skills and contact information." />
+  <meta name="description" content="Flutter & C# developer building cross-platform apps and desktop tools." />
   <meta property="og:title" content="Kemal Emre Gülbayrak — Portfolio" />
-  <meta property="og:description" content="Short bio, skills and contact information." />
+  <meta property="og:description" content="Flutter & C# developer building cross-platform apps and desktop tools." />
   <meta property="og:type" content="website" />
-  <meta name="color-scheme" content="light dark">
   <link rel="icon" href="https://github.com/KEGstudios.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg: #0b0c10;
-      --card:#111318;
-      --muted:#97a0af;
-      --text:#e6e9ef;
-      --brand:#00d1b2;
-      --accent:#4c8bf5;
-      --border:#1f232d;
-      --shadow: 0 10px 30px rgba(0,0,0,.25);
+    :root {
+      --bg: #080A0F;
+      --surface: #0E1117;
+      --surface2: #141820;
+      --border: #1E2433;
+      --text: #E8ECF4;
+      --muted: #6B7794;
+      --brand: #5DFDCB;
+      --brand2: #4C8BF5;
+      --glow: rgba(93,253,203,0.12);
     }
-    @media (prefers-color-scheme: light){
-      :root{--bg:#f7f9fc; --card:#ffffff; --muted:#5f6b7a; --text:#0a0a0a; --border:#e8edf3; --shadow: 0 10px 25px rgba(10,10,10,.08)}
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Syne', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
-    html,body{margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif; color:var(--text); background:radial-gradient(1200px 600px at 10% -10%, rgba(76,139,245,.15), transparent),radial-gradient(1000px 500px at 110% 10%, rgba(0,209,178,.14), transparent), var(--bg)}
-    .container{max-width:1080px;margin:0 auto;padding:28px}
-    header{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-    .brand{display:flex;gap:14px;align-items:center}
-    .avatar{width:56px;height:56px;border-radius:50%;border:2px solid var(--border);box-shadow:var(--shadow);object-fit:cover}
-    nav a{color:var(--muted);margin-left:16px;text-decoration:none;border-bottom:2px solid transparent;padding-bottom:4px}
-    nav a:hover{color:var(--text);border-color:var(--brand)}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;margin:34px 0}
-    .card{background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);border-radius:18px;padding:22px}
-    h1{font-size:clamp(28px,4vw,40px);line-height:1.2;margin:0 0 8px}
-    .subtitle{color:var(--muted);margin:0 0 16px}
-    .row{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{display:inline-flex;gap:8px;align-items:center;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));color:var(--text);text-decoration:none}
-    .btn.primary{background:linear-gradient(180deg, var(--brand), #00b39f); color:#081a14; border-color:transparent; font-weight:600}
-    .btn:hover{transform:translateY(-1px);transition:.2s}
-    section{margin:34px 0}
-    h2{font-size:22px;margin:0 0 14px}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-    .pill{display:inline-block;padding:4px 10px;border-radius:999px;border:1px solid var(--border);font-size:12px;color:var(--muted);margin-right:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:120px}
-    .pill:hover{overflow:visible;white-space:normal;max-width:none;background:rgba(255,255,255,.05)}
-    footer{margin:40px 0 10px;color:var(--muted);text-align:center}
-    .skills{display:flex;flex-wrap:wrap;gap:8px}
-    .contact{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .kbd{padding:.2rem .45rem;border:1px solid var(--border);border-bottom-width:2px;border-radius:6px;background:rgba(255,255,255,.03)}
-    @media (max-width:920px){.hero{grid-template-columns:1fr}.contact{grid-template-columns:1fr}}
+
+    /* Background grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(93,253,203,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(93,253,203,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+    /* NAV */
+    nav {
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      color: var(--brand);
+      letter-spacing: 0.05em;
+    }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      padding: 100px 0 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--brand);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--brand);
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 58px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    h1 span { color: var(--brand); }
+
+    .hero-desc {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      font-family: 'DM Mono', monospace;
+      font-weight: 400;
+    }
+
+    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--brand);
+      color: #080A0F;
+    }
+    .btn-primary:hover { background: #7fffd4; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--brand); color: var(--brand); transform: translateY(-2px); }
+
+    /* HERO RIGHT — stat cards */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: border-color 0.2s;
+    }
+    .stat-card:hover { border-color: var(--brand); }
+    .stat-card:first-child { grid-column: 1 / -1; }
+    .stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--brand);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* SECTIONS */
+    section { padding: 80px 0; border-top: 1px solid var(--border); }
+
+    .section-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--brand);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 40px;
+      letter-spacing: -0.02em;
+    }
+
+    /* PROJECTS */
+    .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--brand), var(--brand2));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .project-card:hover { border-color: rgba(93,253,203,0.3); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+
+    .project-badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--brand);
+      color: var(--brand);
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    .project-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .project-desc {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: var(--surface2);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .project-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .project-features li {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .project-features li::before {
+      content: '→';
+      color: var(--brand);
+      flex-shrink: 0;
+    }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+    }
+    .skill-group-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 16px;
+    }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 8px;
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .skill-pill:hover { border-color: var(--brand); color: var(--brand); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; }
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+    }
+    .about-card p {
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+    .about-card p:last-child { margin-bottom: 0; }
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .info-list li {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .info-list li strong { color: var(--text); }
+
+    /* CONTACT */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .contact-link {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 28px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--brand); transform: translateY(-2px); }
+    .contact-link-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .contact-link-value { font-size: 15px; font-weight: 700; }
+    .contact-arrow { color: var(--brand); font-size: 20px; }
+
+    .freelance-banner {
+      background: linear-gradient(135deg, rgba(93,253,203,0.08), rgba(76,139,245,0.08));
+      border: 1px solid rgba(93,253,203,0.2);
+      border-radius: 20px;
+      padding: 32px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .freelance-banner h3 { font-size: 22px; margin-bottom: 10px; }
+    .freelance-banner p {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .hero-left { animation: fadeUp 0.6s ease both; }
+    .hero-stats { animation: fadeUp 0.6s 0.15s ease both; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; padding: 60px 0 50px; gap: 40px; }
+      .projects { grid-template-columns: 1fr; }
+      .project-card.featured { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .skills-grid { grid-template-columns: 1fr; }
+      .hero-stats { grid-template-columns: 1fr; }
+      .stat-card:first-child { grid-column: auto; }
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <header>
-      <div class="brand">
-        <img class="avatar" src="https://github.com/KEGstudios.png" alt="Profile" onerror="this.style.display='none'"/>
-        <div>
-          <div class="mono" style="font-weight:700">Kemal Emre Gülbayrak</div>
-          <div class="subtitle">Computer Engineering Student</div>
-        </div>
-      </div>
-      <nav>
+    <nav>
+      <div class="nav-logo">KEGstudios</div>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
+        <a href="#about">About</a>
         <a href="#contact">Contact</a>
-        <a href="https://github.com/KEGstudios" target="_blank" rel="noopener">GitHub</a>
-      </nav>
-    </header>
+        <a href="https://github.com/KEGstudios" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+    </nav>
 
-    <section class="hero">
-      <div class="card">
-        <h1>Hello, I'm <span style="color:var(--brand)">Kemal</span>.</h1>
-        <p class="subtitle">I'm passionate about building clean and efficient solutions. My focus areas are C#, Python, and automation with PowerShell. I'm constantly improving my skills and working on projects that blend software engineering with practical problem solving.</p>
-        <div class="row">
-          <a class="btn primary" href="#skills">See my skills</a>
-          <a class="btn" href="https://github.com/KEGstudios?tab=repositories" target="_blank" rel="noopener">All repositories</a>
-          <button class="btn" id="copyEmail" type="button">Email: <span class="mono">kemalgulbayrak@gmail.com</span></button>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-tag">Available for freelance</div>
+        <h1>Flutter & C# <span>Developer</span></h1>
+        <p class="hero-desc">
+          I build cross-platform mobile apps and desktop tools — from polished Flutter UIs to robust ASP.NET Core backends. Based in Istanbul, working worldwide.
+        </p>
+        <div class="hero-btns">
+          <a class="btn btn-primary" href="#contact">Get in touch</a>
+          <a class="btn btn-outline" href="https://github.com/KEGstudios" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </div>
-      <div class="card">
-        <h2>Quick Info</h2>
-        <ul>
-          <li>📍 Istanbul, TR</li>
-          <li>🎓 Marmara University - Computer Engineering</li>
-          <li>💼 Internship: Brisa</li>
-          <li>🏆 Certificates: BTEC, FLL 2018, Academic Science Programme, Social Responsibility Project</li>
-        </ul>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Production projects shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">4</div>
+          <div class="stat-label">Target platforms</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">7</div>
+          <div class="stat-label">Languages supported in AstraX</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="section-tag">// work</div>
+      <h2>Projects</h2>
+      <div class="projects">
+
+        <!-- AstraX featured -->
+        <div class="project-card featured">
+          <div>
+            <span class="project-badge">Featured Project</span>
+            <div class="project-title">AstraX</div>
+            <p class="project-desc">A feature-rich cross-platform IPTV media player built with Flutter. Supports Live TV, Movies, and Series across Android, iOS, Android TV, and Desktop — with a C# ASP.NET Core backend.</p>
+            <div class="project-tags">
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag">ASP.NET Core</span>
+              <span class="tag">Gemini AI</span>
+              <span class="tag">TMDB</span>
+              <span class="tag">media_kit</span>
+              <span class="tag">Sentry</span>
+            </div>
+          </div>
+          <ul class="project-features">
+            <li>M3U & Xtream API playlist management</li>
+            <li>Live TV with DVR, recording & screenshot</li>
+            <li>TMDB integration for movies & series</li>
+            <li>AI assistant powered by Gemini 2.0 Flash</li>
+            <li>Parental controls with PIN & backend sync</li>
+            <li>7 languages, 3 themes, runtime switchable</li>
+            <li>Global search, favorites, recently watched</li>
+          </ul>
+        </div>
+
+        <!-- FSM -->
+        <div class="project-card" href="https://github.com/KEGstudios/FSM" target="_blank" rel="noopener">
+          <span class="project-badge">Desktop Tool</span>
+          <div class="project-title">FSM</div>
+          <p class="project-desc">A Windows desktop utility combining a file system scanner and Active Directory user exporter. Built with WPF/C# for IT professionals.</p>
+          <div class="project-tags">
+            <span class="tag">C#</span>
+            <span class="tag">WPF</span>
+            <span class="tag">PowerShell</span>
+            <span class="tag">LDAP</span>
+            <span class="tag">Active Directory</span>
+          </div>
+        </div>
+
+        <!-- Available for hire card -->
+        <div class="project-card" style="border-style: dashed; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:200px;">
+          <div style="font-size:32px; margin-bottom:14px;">🚀</div>
+          <div class="project-title" style="font-size:18px;">Your Project</div>
+          <p class="project-desc" style="margin-bottom:20px">Open to freelance Flutter, C# and full-stack projects worldwide.</p>
+          <a class="btn btn-primary" href="#contact">Let's talk</a>
+        </div>
+
       </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills">
-      <h2>🛠️ Skills</h2>
-      <div class="card">
-        <div class="skills">
-          <span class="pill">C</span>
-          <span class="pill">Java</span>
-          <span class="pill">Python</span>
-          <span class="pill">C++</span>
-          <span class="pill">C# / .NET</span>
+      <div class="section-tag">// stack</div>
+      <h2>Tech Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <div class="skill-group-title">Mobile & Desktop</div>
+          <div class="skill-list">
+            <span class="skill-pill">Flutter</span>
+            <span class="skill-pill">Dart</span>
+            <span class="skill-pill">WPF</span>
+            <span class="skill-pill">XAML</span>
+            <span class="skill-pill">Android TV</span>
+            <span class="skill-pill">media_kit</span>
+          </div>
         </div>
-        <br>
-        <div class="skills">
-          <span class="pill">Microsoft Office</span>
-          <span class="pill">HTML</span>
-          <span class="pill">Adobe Photoshop</span>
-          <span class="pill">Adobe Lightroom</span>
+        <div class="skill-group">
+          <div class="skill-group-title">Backend</div>
+          <div class="skill-list">
+            <span class="skill-pill">C#</span>
+            <span class="skill-pill">ASP.NET Core</span>
+            <span class="skill-pill">REST API</span>
+            <span class="skill-pill">LDAP</span>
+            <span class="skill-pill">Active Directory</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Languages</div>
+          <div class="skill-list">
+            <span class="skill-pill">C#</span>
+            <span class="skill-pill">Dart</span>
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">Java</span>
+            <span class="skill-pill">C++</span>
+            <span class="skill-pill">C</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Integrations</div>
+          <div class="skill-list">
+            <span class="skill-pill">Gemini AI</span>
+            <span class="skill-pill">TMDB API</span>
+            <span class="skill-pill">Sentry</span>
+            <span class="skill-pill">PowerShell</span>
+            <span class="skill-pill">Formspree</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Tools</div>
+          <div class="skill-list">
+            <span class="skill-pill">Git</span>
+            <span class="skill-pill">Visual Studio</span>
+            <span class="skill-pill">VS Code</span>
+            <span class="skill-pill">GitHub</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Other</div>
+          <div class="skill-list">
+            <span class="skill-pill">HTML/CSS</span>
+            <span class="skill-pill">Photoshop</span>
+            <span class="skill-pill">Lightroom</span>
+            <span class="skill-pill">i18n</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="education">
-      <h2>🎓 Education</h2>
-      <div class="card">
-        <ul>
-          <li><strong>Marmara University</strong> — Computer Engineering (Faculty of Engineering – English) <br> Sep 2023 – Present | 3rd Year</li>
-          <li><strong>Turkish-German University</strong> — German Prep Program <br> Sep 2021 – Jun 2023</li>
-          <li><strong>TED Atakent College (Scholarship)</strong> — Istanbul <br> Sep 2016 – Jun 2021</li>
-        </ul>
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="section-tag">// me</div>
+      <h2>About</h2>
+      <div class="about-grid">
+        <div class="about-card">
+          <p>I'm Kemal, a Computer Engineering student at Marmara University in Istanbul. I build cross-platform applications — my main focus is Flutter for mobile/desktop and C# for backend and desktop tools.</p>
+          <p>I enjoy taking projects from idea to production: designing the architecture, building the UI, wiring up the backend, and shipping. My biggest project so far is AstraX, a full-stack IPTV player with AI integration, multi-language support, and parental controls.</p>
+          <p>I'm open to freelance work — Flutter mobile apps, C# desktop tools, ASP.NET Core backends, or full-stack projects. I work remotely and communicate in English and Turkish.</p>
+        </div>
+        <div class="about-card">
+          <ul class="info-list">
+            <li>📍 <div><strong>Location</strong><br>Istanbul, Turkey</div></li>
+            <li>🎓 <div><strong>Education</strong><br>Marmara University<br>Computer Engineering (EN) — 3rd Year</div></li>
+            <li>💼 <div><strong>Experience</strong><br>Brisa Internship (Aug–Sep 2025)</div></li>
+            <li>🌍 <div><strong>Languages</strong><br>Turkish (native), English (B2–C1), German (intermediate)</div></li>
+            <li>💬 <div><strong>Available for</strong><br>Remote freelance worldwide</div></li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section id="experience">
-      <h2>💼 Experience</h2>
-      <div class="card">
-        <ul>
-          <li><strong>Brisa Internship</strong> <br> Aug 25, 2025 – Sep 19, 2025 (20 workdays)</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="certificates">
-      <h2>🏅 Certificates & Participation</h2>
-      <div class="card">
-        <ul>
-          <li>BTEC Level I Applied Science</li>
-          <li>BTEC Level II Mathematical Applications</li>
-          <li>BTEC Level II Social Media</li>
-          <li>FLL (First Lego League) 2018</li>
-          <li>Academic Science Programme (2017–2021)</li>
-          <li>Kocaeli University Faculty of Medicine Social Responsibility Project (2019)</li>
-        </ul>
-      </div>
-    </section>
-
+    <!-- CONTACT -->
     <section id="contact">
-      <h2>✉️ Contact</h2>
-      <div class="card contact">
-        <div>
-          <p>You can reach me for collaboration and projects.</p>
-          <p><strong>Email:</strong> <a class="mono" href="mailto:kemalgulbayrak@gmail.com">kemalgulbayrak@gmail.com</a></p>
-          <p><strong>GitHub:</strong> <a href="https://github.com/KEGstudios" target="_blank" rel="noopener">github.com/KEGstudios</a></p>
-          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kemal-emre-g%C3%BClbayrak-0ba0b6181/" target="_blank" rel="noopener">linkedin.com/in/kemal-emre-gülbayrak-0ba0b6181</a></p>
+      <div class="section-tag">// contact</div>
+      <h2>Get In Touch</h2>
+      <div class="contact-grid">
+        <a class="contact-link" href="mailto:kemalgulbayrak@gmail.com">
+          <div>
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">kemalgulbayrak@gmail.com</div>
+          </div>
+          <div class="contact-arrow">↗</div>
+        </a>
+        <a class="contact-link" href="https://github.com/KEGstudios" target="_blank" rel="noopener">
+          <div>
+            <div class="contact-link-label">GitHub</div>
+            <div class="contact-link-value">github.com/KEGstudios</div>
+          </div>
+          <div class="contact-arrow">↗</div>
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/kemal-emre-g%C3%BClbayrak-0ba0b6181/" target="_blank" rel="noopener">
+          <div>
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">Kemal Emre Gülbayrak</div>
+          </div>
+          <div class="contact-arrow">↗</div>
+        </a>
+        <div class="contact-link" style="cursor:default" id="copyEmailCard">
+          <div>
+            <div class="contact-link-label">Quick copy</div>
+            <div class="contact-link-value" id="copyLabel">Click to copy email</div>
+          </div>
+          <div class="contact-arrow">⎘</div>
         </div>
-        <form id="contactForm" action="https://formspree.io/f/xkgqbgnv" method="POST">
-          <label>Name<br><input required name="name" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></label>
-          <label style="display:block;margin-top:10px">Email<br><input required type="email" name="email" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></label>
-          <label style="display:block;margin-top:10px">Message<br><textarea required rows="4" name="message" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:transparent;color:var(--text)"></textarea></label>
-          <input type="hidden" name="_subject" value="Portfolio contact" />
-          <button class="btn primary" style="margin-top:12px" type="submit">Send</button>
-          <div id="formStatus" style="font-size:12px;color:var(--muted);margin-top:6px">Your message will be sent securely.</div>
-        </form>
+      </div>
+
+      <div class="freelance-banner">
+        <h3>Open to Freelance Projects 🚀</h3>
+        <p>Flutter mobile apps · C# desktop tools · ASP.NET Core backends · Full-stack development<br>Available for remote work worldwide — let's build something together.</p>
+        <a class="btn btn-primary" href="mailto:kemalgulbayrak@gmail.com">Send me a message</a>
       </div>
     </section>
 
     <footer>
-      © <span id="y"></span> Kemal Emre Gülbayrak — <a href="https://github.com/KEGstudios/KEGstudios.github.io" target="_blank" rel="noopener">SOURCE CODE</a>
+      © <span id="y"></span> Kemal Emre Gülbayrak &nbsp;·&nbsp;
+      <a href="https://github.com/KEGstudios/KEGstudios.github.io" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;">Source ↗</a>
     </footer>
   </div>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    const form = document.getElementById('contactForm');
-    const status = document.getElementById('formStatus');
-    form?.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      status.textContent = 'Sending…';
-      try{
-        const data = new FormData(form);
-        const resp = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' }});
-        if(resp.ok){
-          status.style.color = '#00d1b2';
-          status.textContent = 'Thanks! Your message has been sent.';
-          form.reset();
-        } else {
-          const err = await resp.json().catch(()=>({}));
-          status.style.color = '#ff6b6b';
-          status.textContent = err?.errors?.[0]?.message || 'Sorry, something went wrong. Please email me at kemalgulbayrak@gmail.com.';
-        }
-      }catch{
-        status.style.color = '#ff6b6b';
-        status.textContent = 'Network error. Please email me at kemalgulbayrak@gmail.com.';
-      }
+    const copyCard = document.getElementById('copyEmailCard');
+    const copyLabel = document.getElementById('copyLabel');
+    copyCard?.addEventListener('click', () => {
+      navigator.clipboard.writeText('kemalgulbayrak@gmail.com').then(() => {
+        copyLabel.textContent = 'Copied!';
+        copyCard.style.borderColor = 'var(--brand)';
+        setTimeout(() => {
+          copyLabel.textContent = 'Click to copy email';
+          copyCard.style.borderColor = '';
+        }, 2000);
+      });
     });
   </script>
 </body>
 </html>
-
