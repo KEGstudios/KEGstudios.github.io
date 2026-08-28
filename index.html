@@ -3,665 +3,597 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kemal Emre Gülbayrak — Portfolio</title>
-  <meta name="description" content="Flutter & C# developer building cross-platform apps and desktop tools." />
-  <meta property="og:title" content="Kemal Emre Gülbayrak — Portfolio" />
-  <meta property="og:description" content="Flutter & C# developer building cross-platform apps and desktop tools." />
+  <title>Kemal Emre Gülbayrak</title>
+  <meta name="description" content="Computer Engineering student building empirical models and full-stack software — energy market simulation, data pipelines, Flutter and C#." />
+  <meta property="og:title" content="Kemal Emre Gülbayrak" />
+  <meta property="og:description" content="Computer Engineering student building empirical models and full-stack software — energy market simulation, data pipelines, Flutter and C#." />
   <meta property="og:type" content="website" />
   <link rel="icon" href="https://github.com/KEGstudios.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #080A0F;
-      --surface: #0E1117;
-      --surface2: #141820;
-      --border: #1E2433;
-      --text: #E8ECF4;
-      --muted: #6B7794;
-      --brand: #5DFDCB;
-      --brand2: #4C8BF5;
-      --glow: rgba(93,253,203,0.12);
+      --paper:   #EEF1F4;
+      --card:    #FFFFFF;
+      --ink:     #14181D;
+      --ink-2:   #5C6672;
+      --ink-3:   #8B95A1;
+      --line:    #D8DDE3;
+      --line-2:  #E8ECEF;
+      --accent:  #1F5F52;
+      --accent-soft: #E3EDEA;
+
+      --sans: 'IBM Plex Sans', system-ui, sans-serif;
+      --mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+      --gap: 96px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
     body {
-      font-family: 'Syne', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Background grid */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(93,253,203,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(93,253,203,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-      z-index: 0;
+    a { color: inherit; }
+    ::selection { background: var(--accent); color: #fff; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-3);
     }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
-
-    /* NAV */
-    nav {
-      padding: 24px 0;
+    /* ---------- header ---------- */
+    header {
+      padding: 28px 0;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+      gap: 24px;
+      flex-wrap: wrap;
     }
-    .nav-logo {
-      font-family: 'DM Mono', monospace;
-      font-size: 14px;
-      color: var(--brand);
-      letter-spacing: 0.05em;
-    }
-    .nav-links { display: flex; gap: 28px; }
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 14px;
+    .mark {
+      font-family: var(--mono);
+      font-size: 13px;
       font-weight: 600;
-      letter-spacing: 0.05em;
-      transition: color 0.2s;
+      letter-spacing: 0.02em;
     }
-    .nav-links a:hover { color: var(--text); }
-
-    /* HERO */
-    .hero {
-      padding: 100px 0 80px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .hero-tag {
-      font-family: 'DM Mono', monospace;
+    .mark span { color: var(--accent); }
+    nav { display: flex; gap: 22px; flex-wrap: wrap; }
+    nav a {
+      font-family: var(--mono);
       font-size: 12px;
-      color: var(--brand);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      color: var(--ink-2);
+      text-decoration: none;
+      padding-bottom: 2px;
+      border-bottom: 1px solid transparent;
+      transition: color .15s, border-color .15s;
     }
-    .hero-tag::before {
-      content: '';
-      width: 32px;
-      height: 1px;
-      background: var(--brand);
-    }
+    nav a:hover { color: var(--ink); border-bottom-color: var(--accent); }
 
+    /* ---------- hero ---------- */
+    .hero { padding: 56px 0 var(--gap); }
     h1 {
-      font-size: clamp(38px, 5vw, 58px);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
+      font-size: clamp(30px, 5.2vw, 46px);
+      font-weight: 600;
+      line-height: 1.14;
+      letter-spacing: -0.025em;
+      max-width: 17ch;
+      margin: 18px 0 22px;
     }
-    h1 span { color: var(--brand); }
-
-    .hero-desc {
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.7;
-      margin-bottom: 36px;
-      font-family: 'DM Mono', monospace;
-      font-weight: 400;
+    .lede {
+      font-size: 17px;
+      color: var(--ink-2);
+      max-width: 58ch;
+      margin-bottom: 30px;
     }
-
-    .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-
+    .hero-links { display: flex; gap: 10px; flex-wrap: wrap; }
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 22px;
-      border-radius: 10px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      letter-spacing: 0.02em;
       text-decoration: none;
-      transition: all 0.2s;
-      cursor: pointer;
-      border: none;
+      padding: 10px 18px;
+      border-radius: 3px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--ink);
+      transition: border-color .15s, background .15s, color .15s;
     }
-    .btn-primary {
-      background: var(--brand);
-      color: #080A0F;
-    }
-    .btn-primary:hover { background: #7fffd4; transform: translateY(-2px); }
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--brand); color: var(--brand); transform: translateY(-2px); }
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-solid { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .btn-solid:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 
-    /* HERO RIGHT — stat cards */
-    .hero-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+    /* ---------- signature: merit-order stack ---------- */
+    .stack-figure {
+      margin-top: 64px;
+      border-top: 1px solid var(--line);
+      padding-top: 22px;
     }
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      transition: border-color 0.2s;
+    .stack-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 26px;
+      flex-wrap: wrap;
     }
-    .stat-card:hover { border-color: var(--brand); }
-    .stat-card:first-child { grid-column: 1 / -1; }
-    .stat-num {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--brand);
-      line-height: 1;
-      margin-bottom: 6px;
+    .stack-head p {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--ink-3);
     }
-    .stat-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing: 0.05em;
+    .stack {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 132px;
+      border-bottom: 1px solid var(--ink);
     }
-
-    /* SECTIONS */
-    section { padding: 80px 0; border-top: 1px solid var(--border); }
-
-    .section-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--brand);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    h2 {
-      font-size: 32px;
-      font-weight: 800;
-      margin-bottom: 40px;
-      letter-spacing: -0.02em;
-    }
-
-    /* PROJECTS */
-    .projects { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
-      transition: all 0.25s;
+    .bar {
+      flex: 1;
+      background: var(--line);
+      border-radius: 2px 2px 0 0;
+      transform-origin: bottom;
+      animation: rise .7s cubic-bezier(.22,.7,.3,1) backwards;
       position: relative;
-      overflow: hidden;
-      text-decoration: none;
-      color: inherit;
-      display: block;
     }
-    .project-card::before {
+    .bar.set { background: var(--accent); }
+    .bar.set::after {
+      content: 'price-setting unit';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-bottom: 7px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    @keyframes rise { from { transform: scaleY(0); opacity: 0; } to { transform: scaleY(1); opacity: 1; } }
+    .stack-axis {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 9px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--ink-3);
+    }
+    .stack-legend {
+      display: none;
+      align-items: center;
+      gap: 7px;
+      margin-top: 12px;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--accent);
+    }
+    .stack-legend::before {
+      content: '';
+      width: 9px; height: 9px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* ---------- sections ---------- */
+    section { padding-bottom: var(--gap); }
+    .sec-head { margin-bottom: 34px; }
+    h2 {
+      font-size: 13px;
+      font-family: var(--mono);
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    /* ---------- project index ---------- */
+    .project {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 26px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .project:first-of-type { padding-top: 0; }
+    .project-kind {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--ink-3);
+      padding-top: 4px;
+    }
+    .project h3 {
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.012em;
+      margin-bottom: 8px;
+    }
+    .project h3 a { text-decoration: none; border-bottom: 1px solid var(--line); }
+    .project h3 a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+    .project p { color: var(--ink-2); font-size: 15px; max-width: 62ch; }
+    .notes {
+      list-style: none;
+      margin-top: 14px;
+      display: grid;
+      gap: 6px;
+    }
+    .notes li {
+      font-size: 14px;
+      color: var(--ink-2);
+      padding-left: 17px;
+      position: relative;
+    }
+    .notes li::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--brand), var(--brand2));
-      opacity: 0;
-      transition: opacity 0.25s;
+      left: 0; top: 10px;
+      width: 7px; height: 1px;
+      background: var(--ink-3);
     }
-    .project-card:hover { border-color: rgba(93,253,203,0.3); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-    .project-card:hover::before { opacity: 1; }
+    .stackline {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--ink-3);
+      margin-top: 15px;
+      letter-spacing: 0.01em;
+    }
 
-    .project-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
-
-    .project-badge {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--brand);
-      color: var(--brand);
-      display: inline-block;
-      margin-bottom: 14px;
-    }
-    .project-title {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .project-desc {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .tag {
-      font-family: 'DM Mono', monospace;
+    /* ---------- stack ---------- */
+    .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px 40px; }
+    .skill h4 {
+      font-family: var(--mono);
       font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 6px;
-      background: var(--surface2);
-      color: var(--muted);
-      border: 1px solid var(--border);
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 9px;
     }
-    .project-features {
+    .skill p { font-size: 15px; color: var(--ink); }
+
+    /* ---------- about ---------- */
+    .about { display: grid; grid-template-columns: 1fr 250px; gap: 48px; align-items: start; }
+    .about p { margin-bottom: 16px; color: var(--ink-2); max-width: 62ch; }
+    .about p:last-child { margin-bottom: 0; }
+    .facts {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 6px 20px;
     }
-    .project-features li {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      color: var(--muted);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-    .project-features li::before {
-      content: '→';
-      color: var(--brand);
-      flex-shrink: 0;
-    }
-
-    /* SKILLS */
-    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .skill-group {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px;
-    }
-    .skill-group-title {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.15em;
+    .facts li { padding: 15px 0; border-bottom: 1px solid var(--line-2); }
+    .facts li:last-child { border-bottom: none; }
+    .facts dt {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--brand);
-      margin-bottom: 16px;
+      color: var(--ink-3);
+      margin-bottom: 5px;
     }
-    .skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-pill {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      padding: 5px 12px;
-      border-radius: 8px;
-      background: var(--surface2);
-      color: var(--text);
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-    }
-    .skill-pill:hover { border-color: var(--brand); color: var(--brand); }
+    .facts dd { font-size: 14px; line-height: 1.5; }
 
-    /* ABOUT */
-    .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; }
-    .about-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 28px;
-    }
-    .about-card p {
-      font-family: 'DM Mono', monospace;
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 14px;
-    }
-    .about-card p:last-child { margin-bottom: 0; }
-    .info-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-    .info-list li {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      color: var(--muted);
+    /* ---------- contact ---------- */
+    .contact-list { list-style: none; }
+    .contact-list li { border-bottom: 1px solid var(--line); }
+    .contact-list a, .contact-list button {
       display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .info-list li strong { color: var(--text); }
-
-    /* CONTACT */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .contact-link {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 22px 28px;
-      text-decoration: none;
-      color: inherit;
-      display: flex;
-      align-items: center;
       justify-content: space-between;
-      transition: all 0.2s;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      padding: 17px 2px;
+      text-decoration: none;
+      font-size: 15px;
+      background: none;
+      border: none;
+      font-family: var(--sans);
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+      transition: padding-left .18s, color .18s;
     }
-    .contact-link:hover { border-color: var(--brand); transform: translateY(-2px); }
-    .contact-link-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-    .contact-link-value { font-size: 15px; font-weight: 700; }
-    .contact-arrow { color: var(--brand); font-size: 20px; }
+    .contact-list a:hover, .contact-list button:hover { padding-left: 10px; color: var(--accent); }
+    .contact-list .who { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); min-width: 84px; }
+    .contact-list .val { flex: 1; }
+    .contact-list .arrow { color: var(--ink-3); font-size: 13px; }
 
-    .freelance-banner {
-      background: linear-gradient(135deg, rgba(93,253,203,0.08), rgba(76,139,245,0.08));
-      border: 1px solid rgba(93,253,203,0.2);
-      border-radius: 20px;
-      padding: 32px;
-      text-align: center;
-      margin-top: 20px;
+    .closing {
+      margin-top: 40px;
+      background: var(--accent-soft);
+      border-radius: 4px;
+      padding: 28px 30px;
     }
-    .freelance-banner h3 { font-size: 22px; margin-bottom: 10px; }
-    .freelance-banner p {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
+    .closing h3 { font-size: 17px; font-weight: 600; margin-bottom: 7px; }
+    .closing p { color: var(--ink-2); font-size: 15px; max-width: 56ch; }
 
-    /* FOOTER */
     footer {
-      padding: 40px 0;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: var(--muted);
+      border-top: 1px solid var(--line);
+      padding: 26px 0 44px;
+      font-family: var(--mono);
+      font-size: 11.5px;
+      color: var(--ink-3);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    footer a { color: var(--ink-3); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 720px) {
+      :root { --gap: 68px; }
+      .wrap { padding: 0 22px; }
+      .project { grid-template-columns: 1fr; gap: 10px; }
+      .project-kind { padding-top: 0; }
+      .skills { grid-template-columns: 1fr; }
+      .about { grid-template-columns: 1fr; gap: 32px; }
+      .stack { height: 104px; }
+      .bar.set::after { display: none; }
+      .stack-legend { display: flex; }
+      .contact-list .who { min-width: 0; }
+      .contact-list a, .contact-list button { flex-wrap: wrap; }
     }
 
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero-left { animation: fadeUp 0.6s ease both; }
-    .hero-stats { animation: fadeUp 0.6s 0.15s ease both; }
-
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding: 60px 0 50px; gap: 40px; }
-      .projects { grid-template-columns: 1fr; }
-      .project-card.featured { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr 1fr; }
-      .about-grid { grid-template-columns: 1fr; }
-      .contact-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 600px) {
-      .skills-grid { grid-template-columns: 1fr; }
-      .hero-stats { grid-template-columns: 1fr; }
-      .stat-card:first-child { grid-column: auto; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <nav>
-      <div class="nav-logo">KEGstudios</div>
-      <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
+  <div class="wrap">
+
+    <header>
+      <div class="mark">KEG<span>studios</span></div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
         <a href="https://github.com/KEGstudios" target="_blank" rel="noopener">GitHub ↗</a>
-      </div>
-    </nav>
+      </nav>
+    </header>
 
     <!-- HERO -->
     <div class="hero">
-      <div class="hero-left">
-        <div class="hero-tag">Available for freelance</div>
-        <h1>Flutter & C# <span>Developer</span></h1>
-        <p class="hero-desc">
-          I build cross-platform mobile apps and desktop tools — from polished Flutter UIs to robust ASP.NET Core backends. Based in Istanbul, working worldwide.
-        </p>
-        <div class="hero-btns">
-          <a class="btn btn-primary" href="#contact">Get in touch</a>
-          <a class="btn btn-outline" href="https://github.com/KEGstudios" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
+      <div class="eyebrow">Kemal Emre Gülbayrak — Istanbul</div>
+      <h1>I build models and find out where they break.</h1>
+      <p class="lede">
+        Computer Engineering student at Marmara University. I work on electricity market simulation, automated data pipelines, and full-stack applications — mostly on problems where the first job is working out what the data can actually answer.
+      </p>
+      <div class="hero-links">
+        <a class="btn btn-solid" href="#work">See the work</a>
+        <a class="btn" href="https://github.com/KEGstudios" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
-      <div class="hero-stats">
-        <div class="stat-card">
-          <div class="stat-num">2+</div>
-          <div class="stat-label">Production projects shipped</div>
+
+      <figure class="stack-figure">
+        <div class="stack-head">
+          <div class="eyebrow">Merit order — how a power market sets its price</div>
+          <p>€/MWh</p>
         </div>
-        <div class="stat-card">
-          <div class="stat-num">4</div>
-          <div class="stat-label">Target platforms</div>
+        <div class="stack" aria-hidden="true">
+          <div class="bar" style="height:11%; animation-delay:.05s"></div>
+          <div class="bar" style="height:14%; animation-delay:.09s"></div>
+          <div class="bar" style="height:16%; animation-delay:.13s"></div>
+          <div class="bar" style="height:22%; animation-delay:.17s"></div>
+          <div class="bar" style="height:25%; animation-delay:.21s"></div>
+          <div class="bar" style="height:33%; animation-delay:.25s"></div>
+          <div class="bar" style="height:38%; animation-delay:.29s"></div>
+          <div class="bar" style="height:46%; animation-delay:.33s"></div>
+          <div class="bar set" style="height:58%; animation-delay:.37s"></div>
+          <div class="bar" style="height:63%; animation-delay:.41s"></div>
+          <div class="bar" style="height:71%; animation-delay:.45s"></div>
+          <div class="bar" style="height:80%; animation-delay:.49s"></div>
+          <div class="bar" style="height:92%; animation-delay:.53s"></div>
+          <div class="bar" style="height:100%; animation-delay:.57s"></div>
         </div>
-        <div class="stat-card">
-          <div class="stat-num">7</div>
-          <div class="stat-label">Languages supported in AstraX</div>
+        <div class="stack-axis">
+          <span>cheapest to run</span>
+          <span>most expensive</span>
         </div>
-      </div>
+        <div class="stack-legend">price-setting unit</div>
+        <figcaption class="stackline" style="margin-top:14px">
+          Plants are dispatched cheapest first until demand is met. The last one needed sets the price for everyone. Getting that crossover right is most of what my simulator does.
+        </figcaption>
+      </figure>
     </div>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-      <div class="section-tag">// work</div>
-      <h2>Projects</h2>
-      <div class="projects">
+    <!-- WORK -->
+    <section id="work">
+      <div class="sec-head"><h2>Selected work</h2></div>
 
-        <!-- AstraX featured -->
-        <div class="project-card featured">
-          <div>
-            <span class="project-badge">Featured Project</span>
-            <div class="project-title">AstraX</div>
-            <p class="project-desc">A feature-rich cross-platform IPTV media player built with Flutter. Supports Live TV, Movies, and Series across Android, iOS, Android TV, and Desktop — with a C# ASP.NET Core backend.</p>
-            <div class="project-tags">
-              <span class="tag">Flutter</span>
-              <span class="tag">Dart</span>
-              <span class="tag">ASP.NET Core</span>
-              <span class="tag">Gemini AI</span>
-              <span class="tag">TMDB</span>
-              <span class="tag">media_kit</span>
-              <span class="tag">Sentry</span>
-            </div>
-          </div>
-          <ul class="project-features">
-            <li>M3U & Xtream API playlist management</li>
-            <li>Live TV with DVR, recording & screenshot</li>
-            <li>TMDB integration for movies & series</li>
-            <li>AI assistant powered by Gemini 2.0 Flash</li>
-            <li>Parental controls with PIN & backend sync</li>
-            <li>7 languages, 3 themes, runtime switchable</li>
-            <li>Global search, favorites, recently watched</li>
+      <article class="project">
+        <div class="project-kind">Simulation</div>
+        <div>
+          <h3>Romania Merit-Order Simulator</h3>
+          <p>A dispatch model of the Romanian electricity market, built as an independent cross-check on solar and battery-storage investment cases. Python/FastAPI backend, React frontend, calibrated against historical OPCOM day-ahead prices.</p>
+          <ul class="notes">
+            <li>Cross-border coupling with Hungary, Bulgaria and Serbia</li>
+            <li>Corrected overstated transfer limits on three interconnectors</li>
+            <li>Reconciled IRENA against ENTSO-E for undercounted solar capacity</li>
+            <li>Backtests to ~13–15% deviation in normal years; the 2022 crisis year degrades to 28–44%, which traced back to gas and CO₂ anchors rather than the dispatch logic</li>
           </ul>
+          <div class="stackline">Python · FastAPI · React · pandas · ENTSO-E · OPCOM</div>
         </div>
+      </article>
 
-        <!-- FSM -->
-        <div class="project-card" href="https://github.com/KEGstudios/FSM" target="_blank" rel="noopener">
-          <span class="project-badge">Desktop Tool</span>
-          <div class="project-title">FSM</div>
-          <p class="project-desc">A Windows desktop utility combining a file system scanner and Active Directory user exporter. Built with WPF/C# for IT professionals.</p>
-          <div class="project-tags">
-            <span class="tag">C#</span>
-            <span class="tag">WPF</span>
-            <span class="tag">PowerShell</span>
-            <span class="tag">LDAP</span>
-            <span class="tag">Active Directory</span>
-          </div>
+      <article class="project">
+        <div class="project-kind">Data pipeline</div>
+        <div>
+          <h3>Turkey Macro Dashboard</h3>
+          <p>An automated pipeline pulling macroeconomic series from 18 mapped institutional sources on a daily schedule, with monthly e-mail reports.</p>
+          <ul class="notes">
+            <li>Reverse-engineered keyless TÜİK endpoints and a two-step Treasury API pattern</li>
+            <li>Bulletin-feed polling so fetches follow real publication dates</li>
+            <li>Last-known-value fallback when a source goes down</li>
+          </ul>
+          <div class="stackline">Python · GitHub Actions · EVDS · TÜİK · FRED</div>
         </div>
+      </article>
 
-        <!-- Available for hire card -->
-        <div class="project-card" style="border-style: dashed; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; min-height:200px;">
-          <div style="font-size:32px; margin-bottom:14px;">🚀</div>
-          <div class="project-title" style="font-size:18px;">Your Project</div>
-          <p class="project-desc" style="margin-bottom:20px">Open to freelance Flutter, C# and full-stack projects worldwide.</p>
-          <a class="btn btn-primary" href="#contact">Let's talk</a>
+      <article class="project">
+        <div class="project-kind">Cost model</div>
+        <div>
+          <h3>Containerised Data Centre Feasibility</h3>
+          <p>A revenue and hardware cost model for a 40-ft containerised deployment in Sibiu, Romania — 16 racks, 336 servers, PUE 1.4 — comparing 1U and 2U build-outs against market rates for dedicated server rental.</p>
+          <div class="stackline">Capacity planning · Thermal sizing · Procurement analysis</div>
         </div>
+      </article>
 
-      </div>
+      <article class="project">
+        <div class="project-kind">Application</div>
+        <div>
+          <h3><a href="https://github.com/KEGstudios" target="_blank" rel="noopener">AstraX</a></h3>
+          <p>A cross-platform IPTV media player covering live TV, movies and series across Android, iOS, Android TV and desktop, with a C# ASP.NET Core backend.</p>
+          <ul class="notes">
+            <li>M3U and Xtream playlist management, DVR and recording</li>
+            <li>TMDB metadata enrichment and an LLM-backed assistant</li>
+            <li>Seven languages, three themes, switchable at runtime</li>
+            <li>UI rebuilt through an MCP-based multi-agent workflow</li>
+          </ul>
+          <div class="stackline">Flutter · Dart · ASP.NET Core · media_kit · Sentry</div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-kind">Desktop tool</div>
+        <div>
+          <h3><a href="https://github.com/KEGstudios/FSM" target="_blank" rel="noopener">FSM</a></h3>
+          <p>A Windows utility for IT teams combining a file system scanner with an Active Directory user exporter.</p>
+          <div class="stackline">C# · WPF · PowerShell · LDAP · Active Directory</div>
+        </div>
+      </article>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills">
-      <div class="section-tag">// stack</div>
-      <h2>Tech Stack</h2>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <div class="skill-group-title">Mobile & Desktop</div>
-          <div class="skill-list">
-            <span class="skill-pill">Flutter</span>
-            <span class="skill-pill">Dart</span>
-            <span class="skill-pill">WPF</span>
-            <span class="skill-pill">XAML</span>
-            <span class="skill-pill">Android TV</span>
-            <span class="skill-pill">media_kit</span>
-          </div>
+    <!-- STACK -->
+    <section id="stack">
+      <div class="sec-head"><h2>Stack</h2></div>
+      <div class="skills">
+        <div class="skill">
+          <h4>Languages</h4>
+          <p>Python, C#, Java, C, C++, Dart, SQL</p>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Backend</div>
-          <div class="skill-list">
-            <span class="skill-pill">C#</span>
-            <span class="skill-pill">ASP.NET Core</span>
-            <span class="skill-pill">REST API</span>
-            <span class="skill-pill">LDAP</span>
-            <span class="skill-pill">Active Directory</span>
-          </div>
+        <div class="skill">
+          <h4>Modelling &amp; data</h4>
+          <p>pandas, NumPy, time-series backtesting, scenario analysis, ETL pipelines</p>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Languages</div>
-          <div class="skill-list">
-            <span class="skill-pill">C#</span>
-            <span class="skill-pill">Dart</span>
-            <span class="skill-pill">Python</span>
-            <span class="skill-pill">Java</span>
-            <span class="skill-pill">C++</span>
-            <span class="skill-pill">C</span>
-          </div>
+        <div class="skill">
+          <h4>Backend &amp; web</h4>
+          <p>FastAPI, React, ASP.NET Core, REST APIs</p>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Integrations</div>
-          <div class="skill-list">
-            <span class="skill-pill">Gemini AI</span>
-            <span class="skill-pill">TMDB API</span>
-            <span class="skill-pill">Sentry</span>
-            <span class="skill-pill">PowerShell</span>
-            <span class="skill-pill">Formspree</span>
-          </div>
+        <div class="skill">
+          <h4>AI &amp; agentic tooling</h4>
+          <p>Claude Code, MCP servers, multi-agent workflows, LLM APIs</p>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Tools</div>
-          <div class="skill-list">
-            <span class="skill-pill">Git</span>
-            <span class="skill-pill">Visual Studio</span>
-            <span class="skill-pill">VS Code</span>
-            <span class="skill-pill">GitHub</span>
-          </div>
+        <div class="skill">
+          <h4>Apps &amp; desktop</h4>
+          <p>Flutter, WPF, Android TV, LDAP, Active Directory</p>
         </div>
-        <div class="skill-group">
-          <div class="skill-group-title">Other</div>
-          <div class="skill-list">
-            <span class="skill-pill">HTML/CSS</span>
-            <span class="skill-pill">Photoshop</span>
-            <span class="skill-pill">Lightroom</span>
-            <span class="skill-pill">i18n</span>
-          </div>
+        <div class="skill">
+          <h4>Domain data</h4>
+          <p>ENTSO-E, OPCOM, IRENA, EVDS, TÜİK, FRED</p>
         </div>
       </div>
     </section>
 
     <!-- ABOUT -->
     <section id="about">
-      <div class="section-tag">// me</div>
-      <h2>About</h2>
-      <div class="about-grid">
-        <div class="about-card">
-          <p>I'm Kemal, a Computer Engineering student at Marmara University in Istanbul. I build cross-platform applications — my main focus is Flutter for mobile/desktop and C# for backend and desktop tools.</p>
-          <p>I enjoy taking projects from idea to production: designing the architecture, building the UI, wiring up the backend, and shipping. My biggest project so far is AstraX, a full-stack IPTV player with AI integration, multi-language support, and parental controls.</p>
-          <p>I'm open to freelance work — Flutter mobile apps, C# desktop tools, ASP.NET Core backends, or full-stack projects. I work remotely and communicate in English and Turkish.</p>
+      <div class="sec-head"><h2>About</h2></div>
+      <div class="about">
+        <div>
+          <p>Most of what I do sits between software engineering and empirical modelling: take messy institutional data, build something that reproduces reality closely enough to be useful, then find out where it fails.</p>
+          <p>Right now that means electricity market simulation for a renewable energy investment firm — dispatch models, cross-border coupling, backtesting against historical prices. The interesting part is rarely the code. It's deciding which assumptions the data can support, and being honest about the ones it can't.</p>
+          <p>I also ship full-stack products end to end. I work in English and Turkish, and I'm increasingly drawn to technical AI safety — particularly evaluations and how agentic systems behave in practice.</p>
         </div>
-        <div class="about-card">
-          <ul class="info-list">
-            <li>📍 <div><strong>Location</strong><br>Istanbul, Turkey</div></li>
-            <li>🎓 <div><strong>Education</strong><br>Marmara University<br>Computer Engineering (EN) — 3rd Year</div></li>
-            <li>💼 <div><strong>Experience</strong><br>Brisa Internship (Aug–Sep 2025)</div></li>
-            <li>🌍 <div><strong>Languages</strong><br>Turkish (native), English (B2–C1), German (intermediate)</div></li>
-            <li>💬 <div><strong>Available for</strong><br>Remote freelance worldwide</div></li>
-          </ul>
-        </div>
+        <ul class="facts">
+          <li><dt>Location</dt><dd>Istanbul, Turkey</dd></li>
+          <li><dt>Education</dt><dd>Marmara University<br>Computer Engineering (EN), 3rd year</dd></li>
+          <li><dt>Experience</dt><dd>Renewable energy investment — technical intern<br>Brisa, Aug–Sep 2025</dd></li>
+          <li><dt>Interests</dt><dd>AI safety and evaluations, energy markets, algorithmic trading</dd></li>
+          <li><dt>Languages</dt><dd>Turkish (native), English (C1), German (B2), Japanese (A1)</dd></li>
+        </ul>
       </div>
     </section>
 
     <!-- CONTACT -->
     <section id="contact">
-      <div class="section-tag">// contact</div>
-      <h2>Get In Touch</h2>
-      <div class="contact-grid">
-        <a class="contact-link" href="mailto:kemalgulbayrak@gmail.com">
-          <div>
-            <div class="contact-link-label">Email</div>
-            <div class="contact-link-value">kemalgulbayrak@gmail.com</div>
-          </div>
-          <div class="contact-arrow">↗</div>
-        </a>
-        <a class="contact-link" href="https://github.com/KEGstudios" target="_blank" rel="noopener">
-          <div>
-            <div class="contact-link-label">GitHub</div>
-            <div class="contact-link-value">github.com/KEGstudios</div>
-          </div>
-          <div class="contact-arrow">↗</div>
-        </a>
-        <a class="contact-link" href="https://www.linkedin.com/in/kemal-emre-g%C3%BClbayrak-0ba0b6181/" target="_blank" rel="noopener">
-          <div>
-            <div class="contact-link-label">LinkedIn</div>
-            <div class="contact-link-value">Kemal Emre Gülbayrak</div>
-          </div>
-          <div class="contact-arrow">↗</div>
-        </a>
-        <div class="contact-link" style="cursor:default" id="copyEmailCard">
-          <div>
-            <div class="contact-link-label">Quick copy</div>
-            <div class="contact-link-value" id="copyLabel">Click to copy email</div>
-          </div>
-          <div class="contact-arrow">⎘</div>
-        </div>
-      </div>
+      <div class="sec-head"><h2>Contact</h2></div>
+      <ul class="contact-list">
+        <li>
+          <a href="mailto:kemalgulbayrak@gmail.com">
+            <span class="who">Email</span>
+            <span class="val">kemalgulbayrak@gmail.com</span>
+            <span class="arrow">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/KEGstudios" target="_blank" rel="noopener">
+            <span class="who">GitHub</span>
+            <span class="val">github.com/KEGstudios</span>
+            <span class="arrow">↗</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/kemal-emre-g%C3%BClbayrak-0ba0b6181/" target="_blank" rel="noopener">
+            <span class="who">LinkedIn</span>
+            <span class="val">Kemal Emre Gülbayrak</span>
+            <span class="arrow">↗</span>
+          </a>
+        </li>
+        <li>
+          <button type="button" id="copyEmail">
+            <span class="who">Copy</span>
+            <span class="val" id="copyLabel">Copy my email address</span>
+            <span class="arrow">⎘</span>
+          </button>
+        </li>
+      </ul>
 
-      <div class="freelance-banner">
-        <h3>Open to Freelance Projects 🚀</h3>
-        <p>Flutter mobile apps · C# desktop tools · ASP.NET Core backends · Full-stack development<br>Available for remote work worldwide — let's build something together.</p>
-        <a class="btn btn-primary" href="mailto:kemalgulbayrak@gmail.com">Send me a message</a>
+      <div class="closing">
+        <h3>Open to interesting problems</h3>
+        <p>Research collaborations, empirical modelling and data pipelines, or full-stack work. Remote, worldwide — if you're working on something hard, get in touch.</p>
       </div>
     </section>
 
     <footer>
-      © <span id="y"></span> Kemal Emre Gülbayrak &nbsp;·&nbsp;
-      <a href="https://github.com/KEGstudios/KEGstudios.github.io" target="_blank" rel="noopener" style="color:var(--muted);text-decoration:none;">Source ↗</a>
+      <span>© <span id="y"></span> Kemal Emre Gülbayrak</span>
+      <a href="https://github.com/KEGstudios/KEGstudios.github.io" target="_blank" rel="noopener">Source ↗</a>
     </footer>
+
   </div>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    const copyCard = document.getElementById('copyEmailCard');
-    const copyLabel = document.getElementById('copyLabel');
-    copyCard?.addEventListener('click', () => {
+    const btn = document.getElementById('copyEmail');
+    const label = document.getElementById('copyLabel');
+    btn?.addEventListener('click', () => {
       navigator.clipboard.writeText('kemalgulbayrak@gmail.com').then(() => {
-        copyLabel.textContent = 'Copied!';
-        copyCard.style.borderColor = 'var(--brand)';
-        setTimeout(() => {
-          copyLabel.textContent = 'Click to copy email';
-          copyCard.style.borderColor = '';
-        }, 2000);
-      });
+        label.textContent = 'Copied';
+        setTimeout(() => { label.textContent = 'Copy my email address'; }, 2000);
+      }).catch(() => { label.textContent = 'Copy failed — kemalgulbayrak@gmail.com'; });
     });
   </script>
 </body>
